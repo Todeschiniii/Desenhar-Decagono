@@ -1,0 +1,10 @@
+# Pastas e arquivos temporários do Visual Studio
+.vs/
+bin/
+obj/
+*.suo
+*.user
+*.log
+*.pdb
+*.dll
+*.exe
