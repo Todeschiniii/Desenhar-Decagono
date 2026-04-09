@@ -136,7 +136,6 @@ namespace ProjetoICG1BI
 				case "Amarelo": r = 255; g = 255; b = 0; break;
 				case "Ciano": r = 0; g = 255; b = 255; break;
 				case "Magenta": r = 255; g = 0; b = 255; break;
-				case "Preto": r = 0; g = 0; b = 0; break;
                 default: break;
 			}
 
