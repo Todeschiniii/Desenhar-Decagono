@@ -49,7 +49,7 @@ namespace ProjetoICG1BI
 		}
 
 
-		public void pintaP(Pen caneta, int x, int y, PaintEventArgs e)
+		public void pintaPonto(Pen caneta, int x, int y, PaintEventArgs e)
 		{
 			e.Graphics.DrawLine(caneta, x, y, x + 1, y);
 		}
@@ -79,8 +79,8 @@ namespace ProjetoICG1BI
 		}
 		public void decagono(PaintEventArgs e, int r, int g, int b)
 		{
-			int n = 10; // Lados
-			int R = 150; // Raio externo
+			int n = 10; 
+			int R = 150; 
 			int tentativas = 80000;
 			int largura = 800;
 			int altura = 800;
@@ -89,8 +89,6 @@ namespace ProjetoICG1BI
 			Random rnd = new Random();
 			for (int i = 0; i < tentativas; i++)
 			{
-
-				// 1. Gera ponto aleatório no "bounding box" do decágono
 				int px = rnd.Next(centroX - R, centroX + R);
 				int py = rnd.Next(centroY - R, centroY + R);
 				int dx = delta(px, centroX);
@@ -102,7 +100,7 @@ namespace ProjetoICG1BI
 				double d_max = distancemax(R, n, a);
 				if (d < d_max)
 				{
-					pintaP(caneta(cores(r, g, b)), px, py, e);
+					pintaPonto(caneta(cores(r, g, b)), px, py, e);
 				}
 
 			}
@@ -111,7 +109,7 @@ namespace ProjetoICG1BI
 		{
             if (bntapertado)
             {
-                Color cor = corDoComboBox();
+                corDoComboBox();
                 decagono(e, r, g, b);
                 bntapertado = false;
             }
@@ -121,12 +119,8 @@ namespace ProjetoICG1BI
 		{
 
 		}
-        public Color corDoComboBox()
+        public void corDoComboBox()
 		{
-			if (comboBox1.SelectedItem == null)
-			{
-                return cores(255, 0, 0);
-            }
             string CorSelecionada = comboBox1.SelectedItem.ToString();
 			switch (CorSelecionada)
 			{
@@ -136,10 +130,9 @@ namespace ProjetoICG1BI
 				case "Amarelo": r = 255; g = 255; b = 0; break;
 				case "Ciano": r = 0; g = 255; b = 255; break;
 				case "Magenta": r = 255; g = 0; b = 255; break;
+                case "Branco": r = 255; g = 255; b = 255; break;
                 default: break;
 			}
-
-			return cores(r, g, b);
 		}
         private void button1_Click(object sender, EventArgs e)
 		{
@@ -147,9 +140,9 @@ namespace ProjetoICG1BI
 				MessageBox.Show("Selecione uma cor antes de desenhar o decágono.");
 				return; 
 			}
-
+			
             bntapertado = true;
-			this.Invalidate();
+			Invalidate();
 
 		}
 	}
